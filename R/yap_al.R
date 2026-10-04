@@ -17,7 +17,7 @@
 
 # MA(N) forecasts for demand vector d. Length n + 1: the last element is
 # the next-period forecast. The first N periods have no forecast (NA).
-ma_n_forecast <- function(d, N) {
+yap_al_forecast <- function(d, N) {
   n <- length(d)
   F <- rep(NA_real_, n + 1)
   for (t in (N + 1):(n + 1)) F[t] <- mean(d[(t - N):(t - 1)])
@@ -25,7 +25,7 @@ ma_n_forecast <- function(d, N) {
 }
 
 # MSE over periods start ... n
-ma_n_mse <- function(d, F, start) {
+yap_al_mse <- function(d, F, start) {
   t <- start:length(d)
   mean((F[t] - d[t])^2)
 }
@@ -42,9 +42,9 @@ ma_n_mape <- function(d, F, start) {
 # comparison convention used in R/moving_average.R.
 ma_n_search <- function(d, Nmax = 10) {
   rows <- lapply(1:Nmax, function(N) {
-    F <- ma_n_forecast(d, N)
+    F <-yap_al_forecast(d, N)
     data.frame(N = N,
-               MSE  = ma_n_mse(d, F, Nmax + 1),
+               MSE  = yap_al_mse(d, F, Nmax + 1),
                MAPE = ma_n_mape(d, F, Nmax + 1))
   })
   do.call(rbind, rows)
@@ -85,8 +85,8 @@ ma_n_simulation <- function(d, Nmax = 10, reps = 500, seed = 123) {
   for (r in seq_len(reps)) {
     y <- trend + sample(noise, n, replace = TRUE)
     for (N in 1:Nmax) {
-      F <- ma_n_forecast(y, N)
-      mse[r, N]  <- ma_n_mse(y, F, Nmax + 1)
+      F <- yap_al_forecast(y, N)
+      mse[r, N]  <- yap_al_mse(y, F, Nmax + 1)
       mape[r, N] <- ma_n_mape(y, F, Nmax + 1)
     }
   }
@@ -161,7 +161,7 @@ ma_n_css <- "
 .man .nav-tabs > li.active > a { color:var(--blue); }
 "
 
-ma_n_ui <- function(id) {
+yap_al_ui <- function(id) {
   ns <- NS(id)
   div(class = "man",
     tags$style(HTML(ma_n_css)),
@@ -221,7 +221,7 @@ ma_n_ui <- function(id) {
 # ---------------------------------------------------------------------
 # 4) SERVER
 # ---------------------------------------------------------------------
-ma_n_server <- function(id) {
+yap_al_server <- function(id) {
   moduleServer(id, function(input, output, session) {
 
     # --- Data -----------------------------------------------------------
@@ -275,7 +275,7 @@ ma_n_server <- function(id) {
 
         best <- ma_n_best(tab, input$criterion)
         list(d = d, col = col, tab = tab, sim = sim, best = best,
-             F = ma_n_forecast(d, best), Nmax = Nmax,
+             F = yap_al_forecast(d, best), Nmax = Nmax,
              criterion = input$criterion, method = input$method, error = NULL)
       }, error = function(e) list(error = conditionMessage(e)))
     })
