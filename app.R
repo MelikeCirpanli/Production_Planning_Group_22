@@ -3,13 +3,15 @@ library(shiny)
 ui <- navbarPage("Production Planning",
                  tabPanel("Learning Curve", learning_curve_ui("learning_curve")),
                  tabPanel("Moving Average", moving_average_ui("moving_average")),
-                 tabPanel("Yap / Al", yap_al_ui("yap_al"))
+                 tabPanel("Best N (MA)", ma_n_ui("ma_n")),
+                 tabPanel("Forecasting", forecasting_ui("forecasting"))
 )
 
 server <- function(input, output, session) {
   learning_curve_server("learning_curve")
   moving_average_server("moving_average")
-  yap_al_server("yap_al")
+  ma_n_server("ma_n")
+  forecasting_server("forecasting")
 }
 
 shinyApp(ui, server)
