@@ -4,7 +4,8 @@ ui <- navbarPage("Production Planning",
                  tabPanel("Learning Curve", learning_curve_ui("learning_curve")),
                  tabPanel("Moving Average", moving_average_ui("moving_average")),
                  tabPanel("Best N (MA)", ma_n_ui("ma_n")),
-                 tabPanel("Forecasting", forecasting_ui("forecasting"))
+                 tabPanel("Forecasting", forecasting_ui("forecasting")),
+                 tabPanel("Aggregate Planning", aggregate_planning_ui("aggregate_planning"))
 )
 
 server <- function(input, output, session) {
@@ -12,6 +13,7 @@ server <- function(input, output, session) {
   moving_average_server("moving_average")
   ma_n_server("ma_n")
   forecasting_server("forecasting")
+  aggregate_planning_server("aggregate_planning")
 }
 
 shinyApp(ui, server)
