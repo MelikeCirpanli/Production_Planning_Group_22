@@ -1224,6 +1224,34 @@
         "RemoteSha.Version": "0.9-40"
       }
     },
+    "lpSolve": {
+      "Source": "CRAN",
+      "Repository": "https://cran.rstudio.com",
+      "description": {
+        "Package": "lpSolve",
+        "Version": "5.6.23",
+        "Title": "Interface to 'Lp_solve' v. 5.5 to Solve Linear/Integer Programs",
+        "Authors@R": "c(\n    person(\"Gábor\", \"Csárdi\", , \"csardi.gabor@gmail.com\", role = \"cre\"),\n    person(\"Michel\", \"Berkelaar\", role = \"aut\")\n  )",
+        "Description": "Lp_solve is freely available (under LGPL 2) software for\n        solving linear, integer and mixed integer programs. In this\n        implementation we supply a \"wrapper\" function in C and some R\n        functions that solve general linear/integer problems,\n        assignment problems, and transportation problems. This version\n        calls lp_solve version 5.5.",
+        "License": "LGPL-2",
+        "URL": "https://github.com/gaborcsardi/lpSolve",
+        "BugReports": "https://github.com/gaborcsardi/lpSolve/issues",
+        "Encoding": "UTF-8",
+        "NeedsCompilation": "yes",
+        "Packaged": "2024-12-13 22:30:07 UTC; gaborcsardi",
+        "Author": "Gábor Csárdi [cre],\n  Michel Berkelaar [aut]",
+        "Maintainer": "Gábor Csárdi <csardi.gabor@gmail.com>",
+        "Repository": "CRAN",
+        "Date/Publication": "2024-12-14 00:30:02 UTC",
+        "Built": "R 4.6.1; x86_64-w64-mingw32; 2026-08-19 11:46:54 UTC; windows",
+        "Archs": "x64",
+        "RemoteType": "standard",
+        "RemotePkgRef": "lpSolve",
+        "RemoteRef": "lpSolve",
+        "RemoteRepos": "https://cran.rstudio.com",
+        "RemoteSha.Version": "5.6.23"
+      }
+    },
     "magrittr": {
       "Source": "CRAN",
       "Repository": "https://cran.rstudio.com",
@@ -2161,13 +2189,13 @@
       "checksum": "05bdb783ee6514c8c072e47680af8ff7"
     },
     "app.R": {
-      "checksum": "6ddb14658b7379dd90ffef40d344c0c3"
+      "checksum": "5b533431da505802af04e6a07d22662d"
     },
     "data/sample_demand.csv": {
       "checksum": "4630a6ef610c10da6ba224650f6f351b"
     },
-    "forecasting.R": {
-      "checksum": "84f18884efe457a2de484f944877a7d7"
+    "R/aggregate_planning.R": {
+      "checksum": "c86eba40451ef43a9ba68dee973bcf17"
     },
     "R/forecasting.R": {
       "checksum": "84f18884efe457a2de484f944877a7d7"
